@@ -161,8 +161,8 @@ async def in_help():
         add_me_article(),
         InlineQueryResultArticle(
             title="💒 Whisper",
-            description=f"@SapnaMusicRobot [USERNAME | ID] [TEXT]",
-            input_message_content=InputTextMessageContent(f"**📍Usage:**\n\n@RADHA_MUSIC_GMS_op_bot (Target Username or ID) (Your Message).\n\n**Example:**\n@RADHA_MUSIC_GMS_op_bot @username I Wanna Phuck You"),
+            description=f"@DoomAudiobot [USERNAME | ID] [TEXT]",
+            input_message_content=InputTextMessageContent(f"**📍Usage:**\n\n@DoomAudiobot (Target Username or ID) (Your Message).\n\n**Example:**\n@DoomAudiobot @username type message "),
             thumb_url="https://files.catbox.moe/gaz9cc.jpg",
             reply_markup=switch_btn
         )
@@ -176,7 +176,7 @@ async def bot_inline(_, inline_query):
     
     if string.strip() == "":
         answers = await in_help()
-        await inline_query.answer(answers)
+        await inline_query.answer(answers, cache_time=0)
     else:
         answers = await _whisper(_, inline_query)
         await inline_query.answer(answers[-1], cache_time=0)
