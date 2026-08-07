@@ -33,7 +33,7 @@ switch_btn = InlineKeyboardMarkup([[InlineKeyboardButton("💒 Start Whisper", s
 # Isliye ye result sabse upar dikhaya jata hai jab query khali ho.
 
 ADD_ME_PROMO_TEXT = (
-    "❖ Raushan Music - A Most Powerful Music Streamer Bot For Your Groups & Channels 🚀\n\n"
+    "❖ Doom music - A Most Powerful Music Streamer Bot For Your Groups & Channels 🚀\n\n"
     "▸ Tap The Below Button To Add Me in Your Group & Enjoy High Quality Songs 🎵"
 )
 
