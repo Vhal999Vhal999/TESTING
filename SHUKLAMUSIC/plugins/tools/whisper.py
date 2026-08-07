@@ -23,6 +23,43 @@ whisper_db = {}
 
 switch_btn = InlineKeyboardMarkup([[InlineKeyboardButton("💒 Start Whisper", switch_inline_query_current_chat="")]])
 
+# ================================
+#   ADD-ME PROMO (INLINE MODE)
+# ================================
+# Jab koi user KAHIN BHI (kisi normal user ke DM mein, kisi
+# group mein, kisi bhi chat ke message box mein) "@BotUsername"
+# type karega, Telegram ye inline query seedha bot ko bhej deta
+# hai — bot ka us chat mein member hona zaroori nahi hai.
+# Isliye ye result sabse upar dikhaya jata hai jab query khali ho.
+
+ADD_ME_PROMO_TEXT = (
+    "❖ Raushan Music - A Most Powerful Music Streamer Bot For Your Groups & Channels 🚀\n\n"
+    "▸ Tap The Below Button To Add Me in Your Group & Enjoy High Quality Songs 🎵"
+)
+
+
+def add_me_btn() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton(
+                    text="➕ Add Me To Your Group ➕",
+                    url=f"https://t.me/{app.username}?startgroup=true",
+                )
+            ]
+        ]
+    )
+
+
+def add_me_article() -> InlineQueryResultArticle:
+    return InlineQueryResultArticle(
+        title="❖ Raushan Music",
+        description="Tap to send the Add Me card in this chat 🎵",
+        thumb_url="https://files.catbox.moe/qv2ob4.jpg",
+        input_message_content=InputTextMessageContent(ADD_ME_PROMO_TEXT),
+        reply_markup=add_me_btn(),
+    )
+
 async def _whisper(_, inline_query):
     data = inline_query.query
     results = []
@@ -121,6 +158,7 @@ async def whispes_cb(_, query):
 
 async def in_help():
     answers = [
+        add_me_article(),
         InlineQueryResultArticle(
             title="💒 Whisper",
             description=f"@SapnaMusicRobot [USERNAME | ID] [TEXT]",
@@ -142,4 +180,3 @@ async def bot_inline(_, inline_query):
     else:
         answers = await _whisper(_, inline_query)
         await inline_query.answer(answers[-1], cache_time=0)
-                                               
